@@ -1,8 +1,9 @@
 var _ = require('underscore')._;
 
 module.exports = function(canvas, img, top, bottom) {
-    var width = canvas.width,
-        height = canvas.height,
+    var hasJquery = typeof jQuery !== 'undefined',
+        width = hasJquery ? canvas.width() : canvas.width,
+        height = hasJquery ? canvas.height() : canvas.height,
         ctx = canvas.getContext('2d');
 
     function writeCaption(text, y) {
@@ -18,7 +19,7 @@ module.exports = function(canvas, img, top, bottom) {
         ctx.strokeText( text, width / 2, y );
     }
 
-    _.extend(ctx, {
+    (hasJquery ? $ : _).extend(ctx, {
         strokeStyle : '#000000',
         textAlign : 'center',
         fillStyle : '#ffffff',
