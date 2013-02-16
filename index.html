@@ -1,0 +1,102 @@
+<style>
+canvas {
+    border: 1px dotted #aaa;
+    float: left;
+}
+textarea {
+    float: left;
+}
+</style>
+<script src=jquery.js></script>
+<script src=test.js></script>
+<script>
+$(function() {
+
+  var imgPath = '/public/images/characters/{{character}}.png',
+      $img = $('<img />'),
+      $top = $('#top'),
+      $bottom = $('#bottom'),
+      trigger = function() { $(document).trigger('update'); },
+      isReady = false,
+      waiting = false,
+      $cvs, img;
+
+  [
+    'All of the things',
+    'Baby godfather',
+    'Bear Grylls',
+    'Bitch please',
+    'Bitch please (color)',
+    'Chuck Norris',
+    'Condescending Wonka',
+    'Conspiracy Keanu',
+    'First world problems',
+    'Forever alone',
+    'Good guy Greg',
+    'Great scott',
+    'Hipster barista',
+    'I hate',
+    'Me gusta',
+    'My name is Earl',
+    'Not bad Obamas',
+    'Not sure if',
+    'Okay',
+    'One does not simply',
+    'Pedo Bear',
+    'Philosoraptor',
+    'Power ranger girls',
+    'Projectile squirt',
+    'Rage fu',
+    'Ridiculasly photogenic guy',
+    'Science Cat',
+    'Scumbag Steve',
+    'Skeptical thrid world child',
+    'Socially awkward penguin',
+    'Success kid',
+    'The most interesting guy in the world',
+    'Trollface',
+    'What if I told you',
+    'When I was a kid',
+    'Whyyyy',
+  ].forEach(function(c) {
+    $('#lememes').append($('<option>', { text: c, value: c.toLowerCase().replace(/\s/g, '_').replace(/[^\w_]/g, '') }));
+  });
+
+  $(document).on('update', function() {
+    if(!isReady) {
+      if(waiting) return;
+      waiting = true;
+      setTimeout(trigger, 30);
+      return;
+    }
+    zomgmeme($cvs, img, $top.val(), $bottom.val());
+    isReady = true;
+    waiting = false;
+  });
+
+  $('#lememes').on('change', function() {
+    $img.attr('src', imgPath.replace(/\{\{.*?\}\}/, $(this).val()));
+    isReady = false;
+    trigger();
+  }).trigger('change');
+
+  $('textarea').on('keyup', function() {
+    trigger();
+  })
+
+  $img.load(function() {
+    $('canvas').remove();
+    img = this;
+    $cvs = $('<canvas width='+img.width+' height='+img.height+' />');
+
+    $('body').append($cvs);
+    isReady = true;
+    trigger();
+  });
+});
+</script>
+<!-- <canvas width=550 height=360></canvas> -->
+<select id=lememes>
+</select>
+<textarea id=top>Make memes of</textarea>
+<textarea id=bottom>All the things</textarea>
