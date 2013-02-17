@@ -1,21 +1,30 @@
 * { box-sizing: border-box; }
 
 canvas {
-    border: 1px dotted #aaa;
+  border: 1px dotted #aaa;
 }
 textarea {
-    float: left;
+  float: left;
 }
 
 .row {
-	padding-top: 20px;
-	padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+[disabled=disabled] {
+  cursor: default;
 }
 
 #logo {
-	margin-top: -4px;
-	padding-right: 5px;
+  margin-top: -4px;
+  padding-right: 5px;
 }
 
 #canvas-wrapper { position: relative; }
 #coverImg { height: 100%; position: absolute; top: 0; }
+#success, #fail { display: none; }

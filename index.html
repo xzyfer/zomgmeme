@@ -5,7 +5,9 @@
 
 </style>
 <script src=jquery.js></script>
+<script src=bootstrap.min.js></script>
 <script src=test.js></script>
+<script src=imgur-share.js></script>
 <script>
 $(function() {
 
@@ -13,6 +15,7 @@ $(function() {
       $top = $('#top'),
       $bottom = $('#bottom'),
       $coverImg = $('#coverImg'),
+      $publishBtn = $('#publishBtn'),
       trigger = function() { $(document).trigger('update'); },
       propCanvas = function() { $(document).trigger('prop-canvas'); },
       isReady = false,
@@ -110,9 +113,14 @@ $(function() {
 
   //-- buttons
 
-  // $('#saveBtn').on('click', function() {
-  //   window.location = $('canvas')[0].toDataURL('image/png');
-  // })
+  $('#publishBtn').on('click', function() {
+    var promise = share($('canvas')[0]);
+    $publishBtn.button('loading');
+    promise.always(function() {
+      $publishBtn.button('reset');
+    });
+    return false;
+  })
 });
 </script>
 <h1 class="text-center"><img id=logo src=/public/images/zomg-logo.jpg />ZOMG! Meme Generator</h1>
@@ -138,6 +146,8 @@ $(function() {
   </div>
 </div>
 
-<!-- <div class=row><div class="well text-center"> -->
-  <!-- <a id=publishBtn class="btn-warning btn-large">Publish</a> -->
-<!-- </div></div> -->
+<div class=row><div class="well text-center">
+<div id=success class="alert alert-success">Awesome meme successfully upload to <a href="{{url}}" target="_blank">imgur.com</a></div>
+<div id=fail class="alert alert-error">Shitty meme failed upload to imgur.com</div>
+<a id=publishBtn class="btn-warning btn-large" data-loading-text="Publishing..." href="">Publish</a>
+</div></div>
