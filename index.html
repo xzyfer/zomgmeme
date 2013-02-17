@@ -1,11 +1,8 @@
-<style>
-canvas {
-    border: 1px dotted #aaa;
-    float: left;
-}
-textarea {
-    float: left;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/public/stylesheets/bootstrap.css">
+<link rel="stylesheet" href="/public/stylesheets/bootstrap-responsive.css">
+<link rel="stylesheet" href="/public/stylesheets/style.css">
+
 </style>
 <script src=jquery.js></script>
 <script src=test.js></script>
@@ -89,14 +86,29 @@ $(function() {
     img = this;
     $cvs = $('<canvas width='+img.width+' height='+img.height+' />');
 
-    $('body').append($cvs);
+    $('#canvas-wrapper').prepend($cvs);
     isReady = true;
     trigger();
   });
 });
 </script>
+<h1 class="text-center"><img id=logo src=/public/images/zomg-logo.jpg />ZOMG! Meme Generator</h1>
 <!-- <canvas width=550 height=360></canvas> -->
-<select id=lememes>
-</select>
-<textarea id=top>Make memes of</textarea>
-<textarea id=bottom>All the things</textarea>
+<div class=row><div class="span8 offset2 text-center"><div class=form-horizontal>
+  <label class=control-label for=inputCharacter>Select character</label>
+  <div class=controls><select id=lememes></select></div>
+</div></div></div>
+
+<div class=row><div class=span12>
+<div  class=text-center id=canvas-wrapper></div>
+</div></div>
+
+<div class=row>
+  <div class="span5 offset1">
+    <label class=control-label for=top>Top Line</label>
+    <textarea class=input-xlarge id=top>Make memes of</textarea>
+  </div><div class=span5>
+    <label class=control-label for=bottom>Bottom Line</label>
+    <textarea class=input-xlarge id=bottom>All the things</textarea>
+  </div>
+</div>

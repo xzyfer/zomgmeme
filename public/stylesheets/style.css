@@ -1,8 +1,18 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* { box-sizing: border-box; }
+
+canvas {
+    border: 1px dotted #aaa;
+}
+textarea {
+    float: left;
 }
 
-a {
-  color: #00B7FF;
+.row {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#logo {
+	margin-top: -4px;
+	padding-right: 5px;
 }
