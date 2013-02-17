@@ -68,6 +68,7 @@ $(function() {
       return;
     }
     zomgmeme($cvs, img, $top.val(), $bottom.val());
+    $('#saveBtn').attr('href', $('canvas')[0].toDataURL('image/png'));
     isReady = true;
     waiting = false;
   }, 200));
@@ -99,6 +100,12 @@ $(function() {
     isReady = true;
     trigger();
   });
+
+  //-- buttons
+
+  // $('#saveBtn').on('click', function() {
+  //   window.location = $('canvas')[0].toDataURL('image/png');
+  // })
 });
 </script>
 <h1 class="text-center"><img id=logo src=/public/images/zomg-logo.jpg />ZOMG! Meme Generator</h1>
@@ -109,7 +116,7 @@ $(function() {
 </div></div>
 
 <div class=row><div class=span12>
-<div  class=text-center id=canvas-wrapper></div>
+<div class=text-center id=canvas-wrapper></div>
 </div></div>
 
 <div class=row>
@@ -121,3 +128,8 @@ $(function() {
     <textarea class=input-xlarge id=bottom>All the things</textarea>
   </div>
 </div>
+
+<div class=row><div class="well text-center">
+  <a id=saveBtn class="btn-success btn-large" download>Save</a>
+  <!-- <a id=publishBtn class="btn-warning btn-large">Publish</a> -->
+</div></div>
