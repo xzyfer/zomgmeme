@@ -1664,13 +1664,15 @@ require.define("/node_modules/underscore/underscore.js",function(require,module,
 
 });
 
-require.define("/zomgmeme-generator.js",function(require,module,exports,__dirname,__filename,process,global){var _ = require('underscore')._;
+require.define("/zomgmeme-generator.js",function(require,module,exports,__dirname,__filename,process,global){var _ = (typeof window === 'undefined' ? {} : window)._ = require('underscore')._;
 
 module.exports = (typeof window === 'undefined' ? {} : window).zomgmeme = function(canvas, img, top, bottom) {
     var hasJquery = typeof jQuery !== 'undefined',
         width = hasJquery ? canvas.width() : canvas.width,
         height = hasJquery ? canvas.height() : canvas.height,
         ctx = (hasJquery ? canvas[0] : canvas).getContext('2d');
+
+    window._ = _;
 
     function writeCaption(text, y) {
         var size = 150;

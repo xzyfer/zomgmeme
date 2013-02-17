@@ -16,7 +16,7 @@ $(function() {
       propCanvas = function() { $(document).trigger('prop-canvas'); },
       isReady = false,
       waiting = false,
-      maxWidth = document.width,
+      maxWidth = $('#canvas-wrapper').width(),
       $cvs, img;
 
   [
@@ -58,7 +58,7 @@ $(function() {
     $('#lememes').append($('<option>', { text: c, value: c.toLowerCase().replace(/\s/g, '_').replace(/[^\w_]/g, '') }));
   });
 
-  $(document).on('update', function() {
+  $(document).on('update', _.debounce.call(this, function() {
     if(!isReady) {
       if(waiting) return;
       waiting = true;
@@ -68,7 +68,7 @@ $(function() {
     zomgmeme($cvs, img, $top.val(), $bottom.val());
     isReady = true;
     waiting = false;
-  });
+  }, 200));
 
   $('#lememes').on('change', function() {
     if(img) $(img).remove();
