@@ -1,12 +1,12 @@
-var _ = (typeof window === 'undefined' ? {} : window)._ = require('underscore')._;
+window = (typeof window === 'undefined' ? {} : window);
+
+var _ = window._ = require('underscore')._;
 
 module.exports = (typeof window === 'undefined' ? {} : window).zomgmeme = function(canvas, img, top, bottom) {
     var hasJquery = typeof jQuery !== 'undefined',
         width = hasJquery ? canvas.width() : canvas.width,
         height = hasJquery ? canvas.height() : canvas.height,
         ctx = (hasJquery ? canvas[0] : canvas).getContext('2d');
-
-    window._ = _;
 
     function writeCaption(text, y) {
         var size = 150;

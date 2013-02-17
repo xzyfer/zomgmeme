@@ -52,17 +52,17 @@ $(function() {
     'Pedo Bear',
     'Philosoraptor',
     'Rage fu',
-    'Ridiculasly photogenic guy',
+    'Ridiculously photogenic guy',
     'Science cat',
     'Science dog',
     'Scumbag Steve',
-    'Skeptical thrid world child',
+    'Skeptical third world child',
     'Socially awkward penguin',
     'Success kid',
-    'The most interesting guy in the world',
+    'The most interesting man in the world',
     'Trollface',
     'What if I told you',
-    'Whyyyy'
+    'Whyyyyy'
   ].forEach(function(c) {
     $('#lememes').append($('<option>', {
         text: c,
