@@ -1693,7 +1693,7 @@ module.exports = (typeof window === 'undefined' ? {} : window).zomgmeme = functi
     });
 
     ctx.clearRect( 0, 0, width, height );
-    ctx.drawImage( img, 0, 0 );
+    ctx.drawImage( img, 0, 0, width, height );
     ctx.textBaseline = 'top';
     writeCaption( top.toUpperCase(), 0 );
 

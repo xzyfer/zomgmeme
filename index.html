@@ -10,12 +10,13 @@
 $(function() {
 
   var imgPath = '/public/images/characters/{{character}}.png',
-      $img = $('<img />'),
       $top = $('#top'),
       $bottom = $('#bottom'),
       trigger = function() { $(document).trigger('update'); },
+      propCanvas = function() { $(document).trigger('prop-canvas'); },
       isReady = false,
       waiting = false,
+      maxWidth = document.width,
       $cvs, img;
 
   [
@@ -70,18 +71,26 @@ $(function() {
   });
 
   $('#lememes').on('change', function() {
-    $img.attr('src', imgPath.replace(/\{\{.*?\}\}/, $(this).val()));
+    if(img) $(img).remove();
+
     isReady = false;
-    trigger();
+
+    var $img = $('<img />')
+      .attr('src', imgPath.replace(/\{\{.*?\}\}/, $(this).val()))
+      .load(function() { img = this; propCanvas() });
   }).trigger('change');
 
   $('textarea').on('keyup', function() {
     trigger();
-  })
+  });
 
-  $img.load(function() {
+  $(document).on('prop-canvas', function() {
+    if(img.width > maxWidth) {
+      img.height = maxWidth / (img.width/img.height);
+      img.width = maxWidth;
+    }
+
     $('canvas').remove();
-    img = this;
     $cvs = $('<canvas width='+img.width+' height='+img.height+' />');
 
     $('#canvas-wrapper').prepend($cvs);
