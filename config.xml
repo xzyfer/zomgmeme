@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        version="2.0.3.0" id="zomgmeme-generator">
+
+  <author href="http://www.example.com/"
+          rim:copyright="Copyright 1998-2012 My Corp">My Corp</author>
+
+  <name>ZOMG! Meme Generator</name>
+
+  <description>
+    ZOMG! Totally create like the most totally awesome memes
+  </description>
+
+  <rim:permissions>
+    <rim:permit>access_shared</rim:permit>
+    <rim:permit>use_camera</rim:permit>
+  </rim:permissions>
+
+  <content src="index.html" rim:allowInvokeParams="true"/>
+
+  <feature id="blackberry.ui.dialog"/>
+
+  <feature id="blackberry.app.orientation">
+    <param name="mode" value="portrait" />
+  </feature>
+
+  <feature id="blackberry.app">
+    <param name="backgroundColor" value="0xFFFF0000" />
+  </feature>
+
+</widget>
