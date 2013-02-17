@@ -12,6 +12,7 @@ $(function() {
   var imgPath = '/public/images/characters/{{character}}.png',
       $top = $('#top'),
       $bottom = $('#bottom'),
+      $coverImg = $('#coverImg'),
       trigger = function() { $(document).trigger('update'); },
       propCanvas = function() { $(document).trigger('prop-canvas'); },
       isReady = false,
@@ -68,7 +69,12 @@ $(function() {
       return;
     }
     zomgmeme($cvs, img, $top.val(), $bottom.val());
-    $('#saveBtn').attr('href', $('canvas')[0].toDataURL('image/png'));
+
+    $coverImg
+      .attr('src', $('canvas')[0].toDataURL('image/png'))
+      .css('left', $('canvas').position().left)
+      .show();
+
     isReady = true;
     waiting = false;
   }, 200));
@@ -94,6 +100,7 @@ $(function() {
     }
 
     $('canvas').remove();
+    $coverImg.hide();
     $cvs = $('<canvas width='+img.width+' height='+img.height+' />');
 
     $('#canvas-wrapper').prepend($cvs);
@@ -116,7 +123,9 @@ $(function() {
 </div></div>
 
 <div class=row><div class=span12>
-<div class=text-center id=canvas-wrapper></div>
+<div class=text-center id=canvas-wrapper>
+<img id=coverImg></img>
+</div>
 </div></div>
 
 <div class=row>
@@ -129,7 +138,6 @@ $(function() {
   </div>
 </div>
 
-<div class=row><div class="well text-center">
-  <a id=saveBtn class="btn-success btn-large" download>Save</a>
+<!-- <div class=row><div class="well text-center"> -->
   <!-- <a id=publishBtn class="btn-warning btn-large">Publish</a> -->
-</div></div>
+<!-- </div></div> -->

@@ -16,3 +16,6 @@ textarea {
 	margin-top: -4px;
 	padding-right: 5px;
 }
+
+#canvas-wrapper { position: relative; }
+#coverImg { height: 100%; position: absolute; top: 0; }
