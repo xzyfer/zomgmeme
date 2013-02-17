@@ -1,0 +1,37 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel=stylesheet href=stylesheets/bootstrap.css>
+<link rel=stylesheet href=stylesheets/bootstrap-responsive.css>
+<link rel=stylesheet href=stylesheets/style.css>
+<script src=javascripts/jquery.js></script>
+<script src=javascripts/bootstrap.min.js></script>
+<script src=javascripts/zomgmeme-generator.js></script>
+<script src=javascripts/imgur-share.js></script>
+<script src=javascripts/app.js></script>
+
+<h1 class="text-center"><img id=logo src=images/zomg-logo.jpg />ZOMG! Meme Generator</h1>
+<div class=row><div class="span8 offset2 text-center">
+  <label class=control-label for=inputCharacter>Select character</label>
+  <div class=controls><select id=lememes></select></div>
+</div></div>
+
+<div class=row><div class=span12>
+<div class=text-center id=canvas-wrapper>
+<img id=coverImg></img>
+</div>
+</div></div>
+
+<div class=row>
+  <div class="span5 offset1">
+    <label class=control-label for=top>Top Line</label>
+    <textarea class=input-xlarge id=top>Make memes of</textarea>
+  </div><div class=span5>
+    <label class=control-label for=bottom>Bottom Line</label>
+    <textarea class=input-xlarge id=bottom>All the things</textarea>
+  </div>
+</div>
+
+<div class=row><div class="well text-center">
+<div id=success class="alert alert-success">Awesome meme successfully upload to <a href="#" target="_blank">imgur.com</a></div>
+<div id=fail class="alert alert-error">Shitty meme failed upload to imgur.com</div>
+<a id=publishBtn class="btn-warning btn-large" data-loading-text="Publishing..." href="">Publish</a>
+</div></div>

@@ -17,7 +17,7 @@ a:hover {
 }
 
 [disabled=disabled] {
-  cursor: default;
+  cursor: not-allowed;
 }
 
 #logo {

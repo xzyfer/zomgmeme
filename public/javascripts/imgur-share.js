@@ -1,8 +1,5 @@
 function share(canvas) {
-  var
-    img,
-    $success = $('#success'),
-    $fail = $('#fail');
+  var img;
 
   try {
     img = canvas.toDataURL('image/png', 0.9).split(',')[1];
@@ -23,12 +20,5 @@ function share(canvas) {
       image: img
     },
     dataType: 'json'
-  }).done(function(data) {
-    var url = data.upload.links.imgur_page;
-    $success
-      .html($success.html().replace(/\{\{url\}\}/, url))
-      .slideDown();
-  }).fail(function() {
-    $fail.slideDown();
   });
 }
