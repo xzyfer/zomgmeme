@@ -72,7 +72,7 @@ $(function() {
 
   //-- functions
 
-  var update = _.throttle(function() {
+  var update = function() {
     // delay update if the image isn't loaded
     // or we're already updating
     if(!ready || waiting) {
@@ -91,9 +91,9 @@ $(function() {
     ready = true;
     waiting = false;
     reset();
-  }, 100);
+  };
 
-  var prepCanvas = _.throttle(function() {
+  var prepCanvas = function() {
     if(img.width > maxWidth) {
       img.height = maxWidth / (img.width/img.height);
       img.width = maxWidth;
@@ -106,7 +106,7 @@ $(function() {
     $('#canvas-wrapper').prepend($cvs);
     ready = true;
     update();
-  }, 100);
+  };
 
   var reset = function() {
     if(!dirty) return;
@@ -140,7 +140,7 @@ $(function() {
       .load(function() { img = this; prepCanvas(); });
   }).trigger('change');
 
-  $('textarea').on('keyup', update);
+  $('textarea').on('keyup', _.debounce(update, 100));
 
   //-- buttons
 
